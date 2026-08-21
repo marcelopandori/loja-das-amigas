@@ -19,7 +19,6 @@ body {
   color: #382532;
 }
 
-/* CABEÇALHO */
 header {
   background: linear-gradient(135deg, #ff5fa2, #a95de8);
   color: white;
@@ -47,7 +46,6 @@ header {
   cursor: pointer;
 }
 
-/* CAPA */
 .hero {
   text-align: center;
   padding: 65px 20px;
@@ -74,7 +72,6 @@ header {
   outline: none;
 }
 
-/* PRODUTOS */
 main {
   max-width: 1100px;
   margin: auto;
@@ -97,8 +94,8 @@ main h2 {
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(180,70,130,.12);
-  transition: .2s;
+  box-shadow: 0 8px 25px rgba(180, 70, 130, 0.12);
+  transition: 0.2s;
   padding-bottom: 18px;
 }
 
@@ -142,7 +139,6 @@ main h2 {
   background: #963d79;
 }
 
-/* RODAPÉ */
 footer {
   background: #33232d;
   color: white;
@@ -156,12 +152,11 @@ footer {
   font-weight: bold;
 }
 
-/* MODAL */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.65);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 999;
   justify-content: center;
   align-items: center;
@@ -235,9 +230,7 @@ footer {
   padding: 25px;
 }
 
-/* CELULAR */
 @media (max-width: 600px) {
-
   header {
     padding: 15px;
   }
@@ -264,7 +257,6 @@ footer {
 <body>
 
 <header>
-
   <div class="logo">
     💖 Loja das Amigas
   </div>
@@ -272,18 +264,12 @@ footer {
   <button class="cart-button" onclick="openCart()">
     🛒 Carrinho (<span id="cartCount">0</span>)
   </button>
-
 </header>
 
 <section class="hero">
+  <h1>Pulseiras lindas e baratinhas ✨</h1>
 
-  <h1>
-    Pulseiras lindas e baratinhas ✨
-  </h1>
-
-  <p>
-    Escolha sua favorita e faça seu pedido pelo WhatsApp 💕
-  </p>
+  <p>Escolha sua favorita e faça seu pedido pelo WhatsApp 💕</p>
 
   <input
     class="search"
@@ -292,45 +278,33 @@ footer {
     placeholder="🔎 Procurar pulseira..."
     oninput="searchProducts()"
   >
-
 </section>
 
 <main>
-
   <h2>💕 Nossas Pulseiras</h2>
 
   <div class="products" id="products"></div>
-
 </main>
 
 <footer>
-
   <p>© 2026 Loja das Amigas</p>
 
   <p class="whatsapp-contact">
     📱 WhatsApp: (11) 99110-6862
   </p>
 
-  <p style="margin-top:8px;">
+  <p style="margin-top: 8px;">
     Pulseiras feitas com carinho 💖
   </p>
-
 </footer>
 
-<!-- CARRINHO -->
-
 <div class="modal" id="cartModal">
-
   <div class="cart-box">
 
     <div class="cart-header">
-
       <h2>🛍️ Seu Carrinho</h2>
 
-      <button class="close" onclick="closeCart()">
-        ×
-      </button>
-
+      <button class="close" onclick="closeCart()">×</button>
     </div>
 
     <div id="cartItems"></div>
@@ -344,7 +318,6 @@ footer {
     </button>
 
   </div>
-
 </div>
 
 <script>
@@ -374,38 +347,32 @@ const products = [
   {
     name: "Pulseira de Seleções",
     price: 6.90,
-    emoji: "💚💛"
+    emoji: "💖"
   },
-
 
   {
     name: "Pulseira Amizade",
     price: 4.90,
     emoji: "🩷"
-  }
-
-],
+  },
 
   {
-    name: "Pulseira de ouro",
-    prince: 3.90,
-    emoji :"💞"
+    name: "Pulseira de Ouro",
+    price: 3.90,
+    emoji: "💛"
   }
 
 ];
-    
-    
+
 let cart = [];
 
 
-/* PREÇO */
+/* FORMATAR PREÇO */
 
 function formatPrice(value) {
-
   return value
     .toFixed(2)
     .replace(".", ",");
-
 }
 
 
@@ -413,40 +380,29 @@ function formatPrice(value) {
 
 function showProducts(list = products) {
 
-  const container =
-    document.getElementById("products");
+  const container = document.getElementById("products");
 
   if (list.length === 0) {
-
     container.innerHTML = `
-      <p style="
-        grid-column:1/-1;
-        text-align:center;
-        font-size:18px;
-      ">
+      <p style="grid-column:1/-1; text-align:center; font-size:18px;">
         Nenhuma pulseira encontrada 💔
       </p>
     `;
-
     return;
   }
 
   container.innerHTML = list.map(product => {
 
-    const index =
-      products.indexOf(product);
+    const index = products.indexOf(product);
 
     return `
-
       <div class="product">
 
         <div class="product-image">
           ${product.emoji}
         </div>
 
-        <h3>
-          ${product.name}
-        </h3>
+        <h3>${product.name}</h3>
 
         <p class="price">
           R$ ${formatPrice(product.price)}
@@ -460,7 +416,6 @@ function showProducts(list = products) {
         </button>
 
       </div>
-
     `;
 
   }).join("");
@@ -468,7 +423,7 @@ function showProducts(list = products) {
 }
 
 
-/* ADICIONAR */
+/* ADICIONAR AO CARRINHO */
 
 function addToCart(index) {
 
@@ -487,41 +442,31 @@ function addToCart(index) {
 /* ATUALIZAR CARRINHO */
 
 function updateCart() {
-
-  document.getElementById("cartCount")
-    .textContent = cart.length;
-
+  document.getElementById("cartCount").textContent = cart.length;
 }
 
 
-/* ABRIR */
+/* ABRIR CARRINHO */
 
 function openCart() {
-
-  document.getElementById("cartModal")
-    .style.display = "flex";
+  document.getElementById("cartModal").style.display = "flex";
 
   renderCart();
-
 }
 
 
-/* FECHAR */
+/* FECHAR CARRINHO */
 
 function closeCart() {
-
-  document.getElementById("cartModal")
-    .style.display = "none";
-
+  document.getElementById("cartModal").style.display = "none";
 }
 
 
-/* MOSTRAR CARRINHO */
+/* MOSTRAR ITENS DO CARRINHO */
 
 function renderCart() {
 
-  const container =
-    document.getElementById("cartItems");
+  const container = document.getElementById("cartItems");
 
   if (cart.length === 0) {
 
@@ -531,56 +476,50 @@ function renderCart() {
       </div>
     `;
 
-    document.getElementById("cartTotal")
-      .textContent = "Total: R$ 0,00";
+    document.getElementById("cartTotal").textContent =
+      "Total: R$ 0,00";
 
     return;
   }
 
-  container.innerHTML =
-    cart.map((product, index) => {
+  container.innerHTML = cart.map((product, index) => {
 
-      return `
+    return `
+      <div class="cart-item">
 
-        <div class="cart-item">
+        <span>
+          ${product.emoji} ${product.name}
+        </span>
 
-          <span>
-            ${product.emoji}
-            ${product.name}
-          </span>
+        <strong>
+          R$ ${formatPrice(product.price)}
+        </strong>
 
-          <strong>
-            R$ ${formatPrice(product.price)}
-          </strong>
+        <button
+          class="remove"
+          onclick="removeFromCart(${index})"
+        >
+          Remover
+        </button>
 
-          <button
-            class="remove"
-            onclick="removeFromCart(${index})"
-          >
-            Remover
-          </button>
+      </div>
+    `;
 
-        </div>
+  }).join("");
 
-      `;
 
-    }).join("");
+  const total = cart.reduce(
+    (sum, product) => sum + product.price,
+    0
+  );
 
-  const total =
-    cart.reduce(
-      (sum, product) =>
-      sum + product.price,
-      0
-    );
-
-  document.getElementById("cartTotal")
-    .textContent =
+  document.getElementById("cartTotal").textContent =
     "Total: R$ " + formatPrice(total);
 
 }
 
 
-/* REMOVER */
+/* REMOVER DO CARRINHO */
 
 function removeFromCart(index) {
 
@@ -593,21 +532,20 @@ function removeFromCart(index) {
 }
 
 
-/* PESQUISA */
+/* PESQUISAR PRODUTOS */
 
 function searchProducts() {
 
-  const text =
-    document.getElementById("search")
-      .value
-      .toLowerCase();
+  const text = document
+    .getElementById("search")
+    .value
+    .toLowerCase();
 
-  const result =
-    products.filter(product =>
-      product.name
-        .toLowerCase()
-        .includes(text)
-    );
+  const result = products.filter(product =>
+    product.name
+      .toLowerCase()
+      .includes(text)
+  );
 
   showProducts(result);
 
@@ -627,15 +565,16 @@ function finishOrder() {
     return;
   }
 
-  const total =
-    cart.reduce(
-      (sum, product) =>
-      sum + product.price,
-      0
-    );
+
+  const total = cart.reduce(
+    (sum, product) => sum + product.price,
+    0
+  );
+
 
   let message =
     "Olá! 💖 Quero fazer um pedido na Loja das Amigas:\n\n";
+
 
   cart.forEach(product => {
 
@@ -648,22 +587,23 @@ function finishOrder() {
 
   });
 
+
   message +=
     "\n💰 Total: R$ " +
     formatPrice(total);
 
-  /*
-    NÚMERO DO WHATSAPP
-    (11) 99110-6862
-  */
+
+  /* NÚMERO DO WHATSAPP */
 
   const phone = "5511991106862";
+
 
   const url =
     "https://wa.me/" +
     phone +
     "?text=" +
     encodeURIComponent(message);
+
 
   window.open(url, "_blank");
 
