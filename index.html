@@ -1,695 +1,676 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Loja das Amigas | Pulseiras</title>
+<title>Loja das Amigas 💖</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #fff7fb;
-      color: #33232d;
-    }
+body {
+  background: #fff7fb;
+  color: #382532;
+}
 
-    header {
-      background: linear-gradient(135deg, #ff6fae, #b967e8);
-      color: white;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+/* CABEÇALHO */
+header {
+  background: linear-gradient(135deg, #ff5fa2, #a95de8);
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-    .cart-button {
-      background: white;
-      color: #a94b89;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.cart-button {
+  border: none;
+  background: white;
+  color: #a13d7c;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .hero {
-      text-align: center;
-      padding: 70px 20px;
-      background: linear-gradient(180deg, #ffe0ee, #fff7fb);
-    }
+/* CAPA */
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+  background: linear-gradient(180deg, #ffdcec, #fff7fb);
+}
 
-    .hero h1 {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
 
-    .hero p {
-      font-size: 19px;
-    }
+.hero p {
+  font-size: 18px;
+}
 
-    .search-area {
-      max-width: 700px;
-      margin: 30px auto 0;
-      padding: 0 20px;
-    }
+.search {
+  width: 100%;
+  max-width: 650px;
+  margin-top: 30px;
+  padding: 15px 20px;
+  border: 2px solid #f3b2d1;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+}
 
-    .search {
-      width: 100%;
-      padding: 15px 20px;
-      border: 2px solid #f1b5d2;
-      border-radius: 30px;
-      outline: none;
-      font-size: 16px;
-    }
+/* PRODUTOS */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 45px 20px;
+}
 
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 45px 20px;
-    }
+main h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
 
-    main h2 {
-      text-align: center;
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+.product {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(180,70,130,.12);
+  transition: .2s;
+  padding-bottom: 18px;
+}
 
-    .product {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(180, 70, 130, 0.12);
-      transition: transform 0.2s;
-      padding-bottom: 18px;
-    }
+.product:hover {
+  transform: translateY(-5px);
+}
 
-    .product:hover {
-      transform: translateY(-5px);
-    }
+.product-image {
+  height: 180px;
+  background: #fde5f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 75px;
+}
 
-    .product-image {
-      height: 180px;
-      background: #fde5f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 75px;
-    }
+.product h3 {
+  margin: 15px 18px 8px;
+}
 
-    .product h3 {
-      margin: 15px 18px 8px;
-    }
+.price {
+  margin: 0 18px 15px;
+  color: #bd468e;
+  font-size: 22px;
+  font-weight: bold;
+}
 
-    .product p {
-      margin: 0 18px 12px;
-    }
+.add-button {
+  width: calc(100% - 36px);
+  margin: 0 18px;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: #bd5a9b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .price {
-      font-size: 21px;
-      color: #b84e91;
-      font-weight: bold;
-    }
+.add-button:hover {
+  background: #963d79;
+}
 
-    .add-button {
-      width: calc(100% - 36px);
-      margin: 5px 18px;
-      padding: 13px;
-      border: none;
-      border-radius: 12px;
-      background: #bd5a9b;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+/* RODAPÉ */
+footer {
+  background: #33232d;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  margin-top: 30px;
+}
 
-    .add-button:hover {
-      background: #9e4280;
-    }
+.whatsapp-contact {
+  margin-top: 10px;
+  font-weight: bold;
+}
 
-    footer {
-      margin-top: 30px;
-      padding: 30px;
-      text-align: center;
-      background: #33232d;
-      color: white;
-    }
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+.cart-box {
+  background: white;
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 25px;
+}
 
-    .cart-box {
-      background: white;
-      width: 100%;
-      max-width: 500px;
-      max-height: 85vh;
-      overflow-y: auto;
-      border-radius: 20px;
-      padding: 25px;
-    }
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+.close {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
 
-    .close {
-      border: none;
-      background: transparent;
-      font-size: 28px;
-      cursor: pointer;
-    }
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 0;
-      border-bottom: 1px solid #eee;
-    }
+.remove {
+  border: none;
+  background: #ff6688;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-    .remove {
-      border: none;
-      background: #ff6f91;
-      color: white;
-      border-radius: 8px;
-      padding: 6px 9px;
-      cursor: pointer;
-    }
+.total {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
 
-    .total {
-      margin-top: 20px;
-      font-size: 21px;
-      font-weight: bold;
-    }
+.whatsapp {
+  width: 100%;
+  margin-top: 18px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #25d366;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .whatsapp {
-      width: 100%;
-      margin-top: 18px;
-      padding: 15px;
-      border: none;
-      border-radius: 12px;
-      background: #25d366;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 25px;
+}
 
-    .empty {
-      text-align: center;
-      color: #777;
-      padding: 25px 0;
-    }
+/* CELULAR */
+@media (max-width: 600px) {
 
-    @media (max-width: 600px) {
-      .logo {
-        font-size: 18px;
-      }
+  header {
+    padding: 15px;
+  }
 
-      .cart-button {
-        padding: 9px 12px;
-      }
+  .logo {
+    font-size: 18px;
+  }
 
-      .hero h1 {
-        font-size: 34px;
-      }
-    }
-  </style>
+  .cart-button {
+    padding: 9px 12px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
 
-    <div class="logo">
-      💖 Loja das Amigas
-    </div>
+  <div class="logo">
+    💖 Loja das Amigas
+  </div>
 
-    <button class="cart-button" onclick="openCart()">
-      🛒 Carrinho
-      (<span id="cartCount">0</span>)
-    </button>
+  <button class="cart-button" onclick="openCart()">
+    🛒 Carrinho (<span id="cartCount">0</span>)
+  </button>
 
-  </header>
+</header>
 
+<section class="hero">
 
-  <section class="hero">
+  <h1>
+    Pulseiras lindas e baratinhas ✨
+  </h1>
 
-    <h1>
-      Pulseiras feitas para você ✨
-    </h1>
+  <p>
+    Escolha sua favorita e faça seu pedido pelo WhatsApp 💕
+  </p>
 
-    <p>
-      Encontre sua pulseira favorita e faça seu pedido!
-    </p>
+  <input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="🔎 Procurar pulseira..."
+    oninput="searchProducts()"
+  >
 
-    <div class="search-area">
+</section>
 
-      <input
-        type="text"
-        class="search"
-        id="search"
-        placeholder="🔎 Procurar pulseira..."
-        oninput="searchProducts()"
-      >
+<main>
 
-    </div>
+  <h2>💕 Nossas Pulseiras</h2>
 
-  </section>
+  <div class="products" id="products"></div>
 
+</main>
 
-  <main>
+<footer>
 
-    <h2>
-      💕 Nossas Pulseiras
-    </h2>
+  <p>© 2026 Loja das Amigas</p>
 
-    <div class="products" id="products"></div>
+  <p class="whatsapp-contact">
+    📱 WhatsApp: (11) 99110-6862
+  </p>
 
-  </main>
+  <p style="margin-top:8px;">
+    Pulseiras feitas com carinho 💖
+  </p>
 
+</footer>
 
-  <footer>
+<!-- CARRINHO -->
 
-    <p>
-      © 2026 Loja das Amigas
-    </p>
+<div class="modal" id="cartModal">
 
-    <p>
-      Pulseiras feitas com carinho 💖
-    </p>
+  <div class="cart-box">
 
-  </footer>
+    <div class="cart-header">
 
+      <h2>🛍️ Seu Carrinho</h2>
 
-  <!-- CARRINHO -->
-
-  <div class="modal" id="cartModal">
-
-    <div class="cart-box">
-
-      <div class="cart-header">
-
-        <h2>
-          🛍️ Seu Carrinho
-        </h2>
-
-        <button
-          class="close"
-          onclick="closeCart()"
-        >
-          ×
-        </button>
-
-      </div>
-
-      <div id="cartItems"></div>
-
-      <div class="total" id="cartTotal">
-        Total: R$ 0,00
-      </div>
-
-      <button
-        class="whatsapp"
-        onclick="finishOrder()"
-      >
-        💬 Finalizar pedido pelo WhatsApp
+      <button class="close" onclick="closeCart()">
+        ×
       </button>
 
     </div>
 
+    <div id="cartItems"></div>
+
+    <div class="total" id="cartTotal">
+      Total: R$ 0,00
+    </div>
+
+    <button class="whatsapp" onclick="finishOrder()">
+      💬 Finalizar pedido pelo WhatsApp
+    </button>
+
   </div>
 
+</div>
 
-  <script>
+<script>
 
-    /*
-      ============================
-      PRODUTOS DA LOJA
-      ============================
-    */
+/* PRODUTOS */
 
-    const products = [
+const products = [
 
-      {
-        name: "Pulseira Pink",
-        price: 9.90,
-        emoji: "💗"
-      },
+  {
+    name: "Pulseira Pink",
+    price: 5.90,
+    emoji: "💗"
+  },
 
-      {
-        name: "Pulseira Love",
-        price: 5.90,
-        emoji: "💖"
-      },
+  {
+    name: "Pulseira Love",
+    price: 4.90,
+    emoji: "💖"
+  },
 
-      {
-        name: "Pulseira Colorida",
-        price: 2.90,
-        emoji: "🌈"
-      },
+  {
+    name: "Pulseira Colorida",
+    price: 3.90,
+    emoji: "🌈"
+  },
 
-      {
-        name: "Pulseira Pérola",
-        price: 9.90,
-        emoji: "🤍"
-      },
+  {
+    name: "Pulseira Pérola",
+    price: 6.90,
+    emoji: "🤍"
+  },
 
-      {
-        name: "Pulseira Estrela",
-        price: 2.00,
-        emoji: "⭐"
-      },
+  {
+    name: "Pulseira Estrela",
+    price: 2.90,
+    emoji: "⭐"
+  },
 
-      {
-        name: "Pulseira Amizade",
-        price: 6.90,
-        emoji: "🩷"
-      }
+  {
+    name: "Pulseira Amizade",
+    price: 4.90,
+    emoji: "🩷"
+  }
 
-    ];
+];
 
+let cart = [];
 
-    let cart = [];
 
+/* PREÇO */
 
-    function formatPrice(value) {
+function formatPrice(value) {
 
-      return value
-        .toFixed(2)
-        .replace(".", ",");
+  return value
+    .toFixed(2)
+    .replace(".", ",");
 
-    }
+}
 
 
-    function showProducts(list = products) {
+/* MOSTRAR PRODUTOS */
 
-      const container =
-        document.getElementById("products");
+function showProducts(list = products) {
 
-      if (list.length === 0) {
+  const container =
+    document.getElementById("products");
 
-        container.innerHTML = `
-          <p style="
-            grid-column:1/-1;
-            text-align:center;
-          ">
-            Nenhuma pulseira encontrada 💔
-          </p>
-        `;
+  if (list.length === 0) {
 
-        return;
-      }
+    container.innerHTML = `
+      <p style="
+        grid-column:1/-1;
+        text-align:center;
+        font-size:18px;
+      ">
+        Nenhuma pulseira encontrada 💔
+      </p>
+    `;
 
+    return;
+  }
 
-      container.innerHTML = list.map((product) => {
+  container.innerHTML = list.map(product => {
 
-        const index =
-          products.indexOf(product);
+    const index =
+      products.indexOf(product);
 
-        return `
+    return `
 
-          <div class="product">
+      <div class="product">
 
-            <div class="product-image">
-              ${product.emoji}
-            </div>
+        <div class="product-image">
+          ${product.emoji}
+        </div>
 
-            <h3>
-              ${product.name}
-            </h3>
+        <h3>
+          ${product.name}
+        </h3>
 
-            <p class="price">
-              R$ ${formatPrice(product.price)}
-            </p>
+        <p class="price">
+          R$ ${formatPrice(product.price)}
+        </p>
 
-            <button
-              class="add-button"
-              onclick="addToCart(${index})"
-            >
-              🛒 Adicionar ao carrinho
-            </button>
+        <button
+          class="add-button"
+          onclick="addToCart(${index})"
+        >
+          🛒 Adicionar ao carrinho
+        </button>
 
-          </div>
+      </div>
 
-        `;
+    `;
 
-      }).join("");
+  }).join("");
 
-    }
+}
 
 
-    function addToCart(index) {
+/* ADICIONAR */
 
-      cart.push(products[index]);
+function addToCart(index) {
 
-      updateCart();
+  cart.push(products[index]);
 
-      alert(
-        products[index].name +
-        " foi adicionada ao carrinho! 💖"
-      );
+  updateCart();
 
-    }
+  alert(
+    products[index].name +
+    " foi adicionada ao carrinho! 💖"
+  );
 
+}
 
-    function updateCart() {
 
-      document.getElementById(
-        "cartCount"
-      ).textContent = cart.length;
+/* ATUALIZAR CARRINHO */
 
-    }
+function updateCart() {
 
+  document.getElementById("cartCount")
+    .textContent = cart.length;
 
-    function openCart() {
+}
 
-      document.getElementById(
-        "cartModal"
-      ).style.display = "flex";
 
-      renderCart();
+/* ABRIR */
 
-    }
+function openCart() {
 
+  document.getElementById("cartModal")
+    .style.display = "flex";
 
-    function closeCart() {
+  renderCart();
 
-      document.getElementById(
-        "cartModal"
-      ).style.display = "none";
+}
 
-    }
 
+/* FECHAR */
 
-    function renderCart() {
+function closeCart() {
 
-      const container =
-        document.getElementById("cartItems");
+  document.getElementById("cartModal")
+    .style.display = "none";
 
+}
 
-      if (cart.length === 0) {
 
-        container.innerHTML = `
-          <div class="empty">
-            Seu carrinho está vazio 🛍️
-          </div>
-        `;
+/* MOSTRAR CARRINHO */
 
-        document.getElementById(
-          "cartTotal"
-        ).textContent =
-          "Total: R$ 0,00";
+function renderCart() {
 
-        return;
+  const container =
+    document.getElementById("cartItems");
 
-      }
+  if (cart.length === 0) {
 
+    container.innerHTML = `
+      <div class="empty">
+        Seu carrinho está vazio 🛍️
+      </div>
+    `;
 
-      container.innerHTML =
-        cart.map((product, index) => {
+    document.getElementById("cartTotal")
+      .textContent = "Total: R$ 0,00";
 
-          return `
+    return;
+  }
 
-            <div class="cart-item">
+  container.innerHTML =
+    cart.map((product, index) => {
 
-              <span>
-                ${product.emoji}
-                ${product.name}
-              </span>
+      return `
 
-              <strong>
-                R$ ${formatPrice(product.price)}
-              </strong>
+        <div class="cart-item">
 
-              <button
-                class="remove"
-                onclick="removeFromCart(${index})"
-              >
-                Remover
-              </button>
+          <span>
+            ${product.emoji}
+            ${product.name}
+          </span>
 
-            </div>
+          <strong>
+            R$ ${formatPrice(product.price)}
+          </strong>
 
-          `;
+          <button
+            class="remove"
+            onclick="removeFromCart(${index})"
+          >
+            Remover
+          </button>
 
-        }).join("");
+        </div>
 
+      `;
 
-      const total =
-        cart.reduce(
-          (sum, product) =>
-            sum + product.price,
-          0
-        );
+    }).join("");
 
+  const total =
+    cart.reduce(
+      (sum, product) =>
+      sum + product.price,
+      0
+    );
 
-      document.getElementById(
-        "cartTotal"
-      ).textContent =
-        "Total: R$ " +
-        formatPrice(total);
+  document.getElementById("cartTotal")
+    .textContent =
+    "Total: R$ " + formatPrice(total);
 
-    }
+}
 
 
-    function removeFromCart(index) {
+/* REMOVER */
 
-      cart.splice(index, 1);
+function removeFromCart(index) {
 
-      updateCart();
+  cart.splice(index, 1);
 
-      renderCart();
+  updateCart();
 
-    }
+  renderCart();
 
+}
 
-    function searchProducts() {
 
-      const text =
-        document.getElementById(
-          "search"
-        ).value.toLowerCase();
+/* PESQUISA */
 
+function searchProducts() {
 
-      const result =
-        products.filter(product =>
-          product.name
-            .toLowerCase()
-            .includes(text)
-        );
+  const text =
+    document.getElementById("search")
+      .value
+      .toLowerCase();
 
+  const result =
+    products.filter(product =>
+      product.name
+        .toLowerCase()
+        .includes(text)
+    );
 
-      showProducts(result);
+  showProducts(result);
 
-    }
+}
 
 
-    /*
-      ============================
-      FINALIZAR PEDIDO
-      ============================
-    */
+/* FINALIZAR PEDIDO */
 
-    function finishOrder() {
+function finishOrder() {
 
-      if (cart.length === 0) {
+  if (cart.length === 0) {
 
-        alert(
-          "Adicione algum produto ao carrinho primeiro! 💕"
-        );
+    alert(
+      "Adicione uma pulseira ao carrinho primeiro! 💕"
+    );
 
-        return;
+    return;
+  }
 
-      }
+  const total =
+    cart.reduce(
+      (sum, product) =>
+      sum + product.price,
+      0
+    );
 
+  let message =
+    "Olá! 💖 Quero fazer um pedido na Loja das Amigas:\n\n";
 
-      const total =
-        cart.reduce(
-          (sum, product) =>
-            sum + product.price,
-          0
-        );
+  cart.forEach(product => {
 
+    message +=
+      "• " +
+      product.name +
+      " - R$ " +
+      formatPrice(product.price) +
+      "\n";
 
-      let message =
-        "Olá! 💖 Quero fazer um pedido na Loja das Amigas:%0A%0A";
+  });
 
+  message +=
+    "\n💰 Total: R$ " +
+    formatPrice(total);
 
-      cart.forEach(product => {
+  /*
+    NÚMERO DO WHATSAPP
+    (11) 99110-6862
+  */
 
-        message +=
-          "• " +
-          product.name +
-          " - R$ " +
-          formatPrice(product.price) +
-          "%0A";
+  const phone = "5511991106862";
 
-      });
+  const url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
 
+  window.open(url, "_blank");
 
-      message +=
-        "%0A💰 Total: R$ " +
-        formatPrice(total);
+}
 
 
-      /*
-        ============================
-        WHATSAPP DA LOJA
-        ============================
+/* INICIAR SITE */
 
-        Número: (11) 99110-6862
+showProducts();
 
-      */
-
-      const phone = "5511991106862";
-
-
-      window.open(
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        message,
-        "_blank"
-      );
-
-    }
-
-
-    showProducts();
-
-  </script>
+</script>
 
 </body>
 </html>
