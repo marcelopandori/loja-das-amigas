@@ -1,0 +1,774 @@
+# Código completo — Loja das Amigas
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Loja das Amigas | Pulseiras</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #fff7fb;
+      color: #33232d;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff6fae, #b967e8);
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .cart-button {
+      background: white;
+      color: #a94b89;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(
+        180deg,
+        #ffe0ee,
+        #fff7fb
+      );
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 19px;
+    }
+
+    .search-area {
+      max-width: 700px;
+      margin: 30px auto 0;
+      padding: 0 20px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #f1b5d2;
+      border-radius: 30px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 45px 20px;
+    }
+
+    main h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(180, 70, 130, 0.12);
+      transition: transform 0.2s;
+      padding-bottom: 18px;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      height: 180px;
+      background: #fde5f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 75px;
+    }
+
+    .product h3 {
+      margin: 15px 18px 8px;
+    }
+
+    .product p {
+      margin: 0 18px 12px;
+    }
+
+    .price {
+      font-size: 21px;
+      color: #b84e91;
+      font-weight: bold;
+    }
+
+    .add-button {
+      width: calc(100% - 36px);
+      margin: 5px 18px;
+      padding: 13px;
+      border: none;
+      border-radius: 12px;
+      background: #bd5a9b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-button:hover {
+      background: #9e4280;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 30px;
+      text-align: center;
+      background: #33232d;
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .cart-box {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .close {
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .remove {
+      border: none;
+      background: #ff6f91;
+      color: white;
+      border-radius: 8px;
+      padding: 6px 9px;
+      cursor: pointer;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .whatsapp {
+      width: 100%;
+      margin-top: 18px;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #25d366;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .empty {
+      text-align: center;
+      color: #777;
+      padding: 25px 0;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 18px;
+      }
+
+      .cart-button {
+        padding: 9px 12px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      💖 Loja das Amigas
+    </div>
+
+    <button class="cart-button" onclick="openCart()">
+      🛒 Carrinho
+      (<span id="cartCount">0</span>)
+    </button>
+  </header>
+
+  <section class="hero">
+
+    <h1>
+      Pulseiras feitas para você ✨
+    </h1>
+
+    <p>
+      Encontre sua pulseira favorita e faça seu pedido!
+    </p>
+
+    <div class="search-area">
+      <input
+        type="text"
+        class="search"
+        id="search"
+        placeholder="🔎 Procurar pulseira..."
+        oninput="searchProducts()"
+      >
+    </div>
+
+  </section>
+
+  <main>
+
+    <h2>
+      💕 Nossas Pulseiras
+    </h2>
+
+    <div class="products" id="products"></div>
+
+  </main>
+
+  <footer>
+
+    <p>
+      © 2026 Loja das Amigas
+    </p>
+
+    <p>
+      Pulseiras feitas com carinho 💖
+    </p>
+
+  </footer>
+
+
+  <!-- CARRINHO -->
+
+  <div class="modal" id="cartModal">
+
+    <div class="cart-box">
+
+      <div class="cart-header">
+
+        <h2>
+          🛍️ Seu Carrinho
+        </h2>
+
+        <button
+          class="close"
+          onclick="closeCart()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div id="cartItems"></div>
+
+      <div class="total" id="cartTotal">
+        Total: R$ 0,00
+      </div>
+
+      <button
+        class="whatsapp"
+        onclick="finishOrder()"
+      >
+        💬 Finalizar pedido pelo WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /*
+      ============================
+      PRODUTOS DA LOJA
+      ============================
+    */
+
+    const products = [
+
+      {
+        name: "Pulseira Pink",
+        price: 19.90,
+        emoji: "💗"
+      },
+
+      {
+        name: "Pulseira Love",
+        price: 24.90,
+        emoji: "💖"
+      },
+
+      {
+        name: "Pulseira Colorida",
+        price: 22.90,
+        emoji: "🌈"
+      },
+
+      {
+        name: "Pulseira Pérola",
+        price: 29.90,
+        emoji: "🤍"
+      },
+
+      {
+        name: "Pulseira Estrela",
+        price: 21.90,
+        emoji: "⭐"
+      },
+
+      {
+        name: "Pulseira Amizade",
+        price: 26.90,
+        emoji: "🩷"
+      }
+
+    ];
+
+
+    let cart = [];
+
+
+    /*
+      ============================
+      FORMATAÇÃO DE PREÇO
+      ============================
+    */
+
+    function formatPrice(value) {
+
+      return value
+        .toFixed(2)
+        .replace(".", ",");
+
+    }
+
+
+    /*
+      ============================
+      MOSTRAR PRODUTOS
+      ============================
+    */
+
+    function showProducts(list = products) {
+
+      const container =
+        document.getElementById("products");
+
+      if (list.length === 0) {
+
+        container.innerHTML = `
+          <p style="
+            grid-column:1/-1;
+            text-align:center;
+          ">
+            Nenhuma pulseira encontrada 💔
+          </p>
+        `;
+
+        return;
+      }
+
+
+      container.innerHTML = list.map((product) => {
+
+        const index =
+          products.indexOf(product);
+
+        return `
+
+          <div class="product">
+
+            <div class="product-image">
+              ${product.emoji}
+            </div>
+
+            <h3>
+              ${product.name}
+            </h3>
+
+            <p class="price">
+              R$ ${formatPrice(product.price)}
+            </p>
+
+            <button
+              class="add-button"
+              onclick="addToCart(${index})"
+            >
+              🛒 Adicionar ao carrinho
+            </button>
+
+          </div>
+
+        `;
+
+      }).join("");
+
+    }
+
+
+    /*
+      ============================
+      ADICIONAR AO CARRINHO
+      ============================
+    */
+
+    function addToCart(index) {
+
+      cart.push(products[index]);
+
+      updateCart();
+
+      alert(
+        products[index].name +
+        " foi adicionada ao carrinho! 💖"
+      );
+
+    }
+
+
+    /*
+      ============================
+      ATUALIZAR CARRINHO
+      ============================
+    */
+
+    function updateCart() {
+
+      document.getElementById(
+        "cartCount"
+      ).textContent = cart.length;
+
+    }
+
+
+    /*
+      ============================
+      ABRIR CARRINHO
+      ============================
+    */
+
+    function openCart() {
+
+      document.getElementById(
+        "cartModal"
+      ).style.display = "flex";
+
+      renderCart();
+
+    }
+
+
+    /*
+      ============================
+      FECHAR CARRINHO
+      ============================
+    */
+
+    function closeCart() {
+
+      document.getElementById(
+        "cartModal"
+      ).style.display = "none";
+
+    }
+
+
+    /*
+      ============================
+      MOSTRAR ITENS
+      ============================
+    */
+
+    function renderCart() {
+
+      const container =
+        document.getElementById("cartItems");
+
+
+      if (cart.length === 0) {
+
+        container.innerHTML = `
+          <div class="empty">
+            Seu carrinho está vazio 🛍️
+          </div>
+        `;
+
+        document.getElementById(
+          "cartTotal"
+        ).textContent =
+          "Total: R$ 0,00";
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        cart.map((product, index) => {
+
+          return `
+
+            <div class="cart-item">
+
+              <span>
+                ${product.emoji}
+                ${product.name}
+              </span>
+
+              <strong>
+                R$ ${formatPrice(product.price)}
+              </strong>
+
+              <button
+                class="remove"
+                onclick="removeFromCart(${index})"
+              >
+                Remover
+              </button>
+
+            </div>
+
+          `;
+
+        }).join("");
+
+
+      const total =
+        cart.reduce(
+          (sum, product) =>
+            sum + product.price,
+          0
+        );
+
+
+      document.getElementById(
+        "cartTotal"
+      ).textContent =
+        "Total: R$ " +
+        formatPrice(total);
+
+    }
+
+
+    /*
+      ============================
+      REMOVER PRODUTO
+      ============================
+    */
+
+    function removeFromCart(index) {
+
+      cart.splice(index, 1);
+
+      updateCart();
+
+      renderCart();
+
+    }
+
+
+    /*
+      ============================
+      PESQUISA
+      ============================
+    */
+
+    function searchProducts() {
+
+      const text =
+        document.getElementById(
+          "search"
+        ).value.toLowerCase();
+
+
+      const result =
+        products.filter(product =>
+          product.name
+            .toLowerCase()
+            .includes(text)
+        );
+
+
+      showProducts(result);
+
+    }
+
+
+    /*
+      ============================
+      FINALIZAR PEDIDO
+      ============================
+    */
+
+    function finishOrder() {
+
+      if (cart.length === 0) {
+
+        alert(
+          "Adicione algum produto ao carrinho primeiro! 💕"
+        );
+
+        return;
+
+      }
+
+
+      const total =
+        cart.reduce(
+          (sum, product) =>
+            sum + product.price,
+          0
+        );
+
+
+      let message =
+        "Olá! 💖 Quero fazer um pedido na Loja das Amigas:%0A%0A";
+
+
+      cart.forEach(product => {
+
+        message +=
+          "• " +
+          product.name +
+          " - R$ " +
+          formatPrice(product.price) +
+          "%0A";
+
+      });
+
+
+      message +=
+        "%0A💰 Total: R$ " +
+        formatPrice(total);
+
+
+      /*
+        IMPORTANTE:
+
+        Se você tiver um número de WhatsApp
+        da loja, coloque aqui.
+
+        Exemplo:
+
+        const phone = "5511999999999";
+
+      */
+
+      const phone = "";
+
+
+      if (phone === "") {
+
+        alert(
+          "O site está funcionando! 💖\n\n" +
+          "Para receber pedidos no WhatsApp, " +
+          "coloque o número da loja na variável " +
+          "phone dentro do código."
+        );
+
+        return;
+
+      }
+
+
+      window.open(
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        message,
+        "_blank"
+      );
+
+    }
+
+
+    /*
+      ============================
+      INICIAR SITE
+      ============================
+    */
+
+    showProducts();
+
+  </script>
+
+</body>
+</html>
+```
